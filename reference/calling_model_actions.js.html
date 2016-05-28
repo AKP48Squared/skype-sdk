@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Skype Bot SDK for Node.js Source: calling/model/actions.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Skype Bot SDK for Node.js</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AbstractModelType.html">AbstractModelType</a></li><li><a href="ActionBase.html">ActionBase</a></li><li><a href="Answer.html">Answer</a></li><li><a href="AnswerAppHostedMedia.html">AnswerAppHostedMedia</a></li><li><a href="AnswerAppHostedMediaOutcome.html">AnswerAppHostedMediaOutcome</a></li><li><a href="AnswerOutcome.html">AnswerOutcome</a></li><li><a href="Attachment.html">Attachment</a></li><li><a href="Bot.html">Bot</a></li><li><a href="BotService.html">BotService</a></li><li><a href="CallBackLink.html">CallBackLink</a></li><li><a href="CallingService.html">CallingService</a></li><li><a href="CallStateChangeNotification.html">CallStateChangeNotification</a></li><li><a href="ChoiceOutcome.html">ChoiceOutcome</a></li><li><a href="CollectDigits.html">CollectDigits</a></li><li><a href="CollectDigitsOutcome.html">CollectDigitsOutcome</a></li><li><a href="ContactNotification.html">ContactNotification</a></li><li><a href="Conversation.html">Conversation</a></li><li><a href="ConversationBase.html">ConversationBase</a></li><li><a href="ConversationResult.html">ConversationResult</a></li><li><a href="Event.html">Event</a></li><li><a href="Hangup.html">Hangup</a></li><li><a href="HangupOutcome.html">HangupOutcome</a></li><li><a href="HistoryDisclosed.html">HistoryDisclosed</a></li><li><a href="Message.html">Message</a></li><li><a href="MessagingService.html">MessagingService</a></li><li><a href="NotificationBase.html">NotificationBase</a></li><li><a href="NotificationResponse.html">NotificationResponse</a></li><li><a href="OperationOutcomeBase.html">OperationOutcomeBase</a></li><li><a href="Participant.html">Participant</a></li><li><a href="PlaceCall.html">PlaceCall</a></li><li><a href="PlaceCallOutcome.html">PlaceCallOutcome</a></li><li><a href="PlayPrompt.html">PlayPrompt</a></li><li><a href="PlayPromptOutcome.html">PlayPromptOutcome</a></li><li><a href="Prompt.html">Prompt</a></li><li><a href="RecognitionOption.html">RecognitionOption</a></li><li><a href="Recognize.html">Recognize</a></li><li><a href="RecognizeOutcome.html">RecognizeOutcome</a></li><li><a href="Record.html">Record</a></li><li><a href="RecordOutcome.html">RecordOutcome</a></li><li><a href="Reject.html">Reject</a></li><li><a href="RejectOutcome.html">RejectOutcome</a></li><li><a href="RosterParticipant.html">RosterParticipant</a></li><li><a href="RosterUpdateNotification.html">RosterUpdateNotification</a></li><li><a href="TopicUpdated.html">TopicUpdated</a></li><li><a href="TranscriptionOutcome.html">TranscriptionOutcome</a></li><li><a href="Transfer.html">Transfer</a></li><li><a href="TransferOutcome.html">TransferOutcome</a></li><li><a href="UserAdded.html">UserAdded</a></li><li><a href="UserRemoved.html">UserRemoved</a></li><li><a href="VideoSubscription.html">VideoSubscription</a></li><li><a href="VideoSubscriptionOutcome.html">VideoSubscriptionOutcome</a></li><li><a href="Workflow.html">Workflow</a></li><li><a href="WorkflowValidationOutcome.html">WorkflowValidationOutcome</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BotService.html#event:attachment">BotService#event:attachment</a></li><li><a href="BotService.html#event:contactAdded">BotService#event:contactAdded</a></li><li><a href="BotService.html#event:contactRemoved">BotService#event:contactRemoved</a></li><li><a href="BotService.html#event:groupMessage">BotService#event:groupMessage</a></li><li><a href="BotService.html#event:message">BotService#event:message</a></li><li><a href="BotService.html#event:personalMessage">BotService#event:personalMessage</a></li><li><a href="BotService.html#event:threadAddMember">BotService#event:threadAddMember</a></li><li><a href="BotService.html#event:threadBotAdded">BotService#event:threadBotAdded</a></li><li><a href="BotService.html#event:threadBotRemoved">BotService#event:threadBotRemoved</a></li><li><a href="BotService.html#event:threadHistoryDisclosedUpdate">BotService#event:threadHistoryDisclosedUpdate</a></li><li><a href="BotService.html#event:threadRemoveMember">BotService#event:threadRemoveMember</a></li><li><a href="BotService.html#event:threadTopicUpdated">BotService#event:threadTopicUpdated</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#incomingCallbackHandler">incomingCallbackHandler</a></li><li><a href="global.html#incomingCallHandler">incomingCallHandler</a></li><li><a href="global.html#instantiateAction">instantiateAction</a></li><li><a href="global.html#instantiateNotification">instantiateNotification</a></li><li><a href="global.html#instantiateOperationOutcome">instantiateOperationOutcome</a></li><li><a href="global.html#messagingHandler">messagingHandler</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+		<div class="col-sm-3 col-md-3">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: calling/model/actions.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">'use strict';
+
+const AbstractModelType = require('./abstract-model-type');
+const ModelValidation = require('./model-validation');
+const CallingModelEnums = require('./enums');
+const CallingModelLimits = require('./limits');
+const Prompt = require('./prompt');
+const CollectDigits = require('./collect-digits');
+const RecognitionOption = require('./recognition-option');
+const Dmtfs = require('./dmtfs');
+const Participant = require('./participant');
+
+var actionOrdering = {
+    'reject' : -2,
+    'answer' : 1,
+    'answerAppHostedMedia': 1,
+    'placeCall': 1,
+    'videoSubscription': 1,
+    'playPrompt': 2,
+    'record': 2,
+    'recognize': 2,
+    'transfer': 2,
+    'hangup': 3    
+};
+
+/**
+ * Base class for various actions; it must not be instantiated directly
+ *
+ * @extends AbstractModelType
+ *
+ * @property {String} operationId - an operation Id needs to be specified by customer so that they can correlate outcome to the action. It becomes necessary when multiple actions are specified in one response body
+ * @property {String} action - type of action
+ * @property {Boolean} isStandAloneAction - flag to indicate whether this action must not be specified along with any other actions
+ * @property {Object} additionalData - optional. Additional arbitrary data
+ */
+class ActionBase extends AbstractModelType
+{
+    /**
+     * Creates a new ActionBase instance; it is forbidden to call this constructor directly
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super();
+        this.isStandAloneAction = isStandAloneAction == null ? false: isStandAloneAction;
+        this.operationId = null;
+        this.action = null;
+        this.additionalData = null;
+
+        this.populatePlainInput(inputData);
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context)
+    {
+        var errors = [];
+        
+        errors = errors.concat(ModelValidation.validateString(context, this.operationId, 'ActionBase.operationId'));
+        errors = errors.concat(ModelValidation.validateEnum(context, this.action, CallingModelEnums.ActionType, 'ActionBase.action'));
+        errors = errors.concat(ModelValidation.validateGenericObject(context, this.additionalData, 'ActionBase.additionalData'));
+        errors = errors.concat(ModelValidation.validateBoolean(context, this.isStandAloneAction, 'ActionBase.isStandAloneAction'));
+
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should accept the call.
+ * The media is hosted by the server call bot
+ *
+ * @extends ActionBase
+ *
+ * @property {String[]} AcceptModalityTypes - array of CallingModelEnums.ModalityType; The modality types the application will accept, Audio by default
+ */
+class Answer extends ActionBase
+{
+    /**
+     * Creates a new Answer action
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and not part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.Answer; 
+        this.acceptModalityTypes = [ CallingModelEnums.ModalityType.Audio ];
+
+        this.populatePlainInput(inputData);
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context)
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.Answer)
+            errors.push('Answer.type is set to invalid value ' + this.type);
+
+        errors = errors.concat(ModelValidation.validateEnumArray(context, this.acceptModalityTypes, CallingModelEnums.ModalityType,
+            'Answer.acceptModalityTypes',
+            [CallingModelEnums.ModalityType.Unknown, CallingModelEnums.ModalityType.VideoBasedScreenSharing]));
+
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should accept the call but that the
+ * application will host the media
+ *
+ * @extends ActionBase
+ *
+ * @property {Object} mediaConfiguration - opaque object to pass media negotation configuration from the application to the ExecutionAgent
+ */
+class AnswerAppHostedMedia extends Answer
+{
+    /**
+     * Creates a new AnswerAppHostedMedia action instance
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.AnswerAppHostedMedia;
+        this.mediaConfiguration = null;
+
+        this.populatePlainInput(inputData);
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context)
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.AnswerAppHostedMedia)
+            errors.push('AnswerAppHostedMedia.type is set to invalid value ' + this.type);
+
+        errors = errors.concat(ModelValidation.validateGenericObject(context, this.mediaConfiguration, 'AnswerAppHostedMedia.mediaConfiguration', false));
+        if(this.mediaConfiguration != null &amp;&amp; ModelValidation.checkIfObject(this.mediaConfiguration))
+        {
+            var stringMediaConfiguration = JSON.stringify(this.mediaConfiguration);
+            if(stringMediaConfiguration != null &amp;&amp; stringMediaConfiguration.length > CallingModelLimits.MediaConfigurationLength.Max)
+            {
+                errors.push('AnswerAppHostedMedia.mediaConfiguration exceeds after JSON serialization the maximum allowed length of' + AnswerAppHostedMedia.mediaConfiguration);
+            }
+        }
+
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should hangup the call
+ *
+ * @extends ActionBase
+ */
+class Hangup extends ActionBase
+{
+    /**
+     * Creates a new Hangup action instance
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.Hangup; 
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context)
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.Hangup)
+            errors.push('Hangup.type is set to invalid value ' + this.type);
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should place an outgoing call
+ *
+ * @extends ActionBase
+ *
+ * @property {Object} source - Participant; MRI for the source of the call
+ * @property {Object} target - Participant; MRI of the user to whom the call is to be placed
+ * @property {String} subject - optional; subject of the call that is to be placed
+ * @property {String} appId - AppId of the customer
+ * @property {Number} initiateModalityTypes - optional, default: Audio ; the modality types the application want to present
+ */
+class PlaceCall extends ActionBase
+{
+
+    /**
+     * Creates a new PlaceCall action instance
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.PlaceCall;
+        this.source = null;
+        this.target = null;
+        this.subject = null;
+        this.initiateModalityTypes = [CallingModelEnums.ModalityType.Audio];
+        this.appId = null;
+
+        this.populatePlainInput(inputData, {
+            'source': attrData => { return new Participant(attrData); },
+            'target': attrData => { return new Participant(attrData); }
+        });
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context)
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.PlaceCall)
+            errors.push('PlaceCall.type is set to invalid value ' + this.type);
+
+        errors = errors.concat(ModelValidation.validateTypedObject(context, this.source, Participant, 'PlaceCall.source', 'Participant'));
+        errors = errors.concat(ModelValidation.validateTypedObject(context, this.target, Participant, 'PlaceCall.target', 'Participant'));
+        errors = errors.concat(ModelValidation.validateString(context, this.appId, 'PlaceCall.appId'));
+        errors = errors.concat(ModelValidation.validateOptionalString(context, this.subject, 'PlaceCall.subject'));
+
+        errors = errors.concat(ModelValidation.validateEnumArray(context, this.initiateModalityTypes, CallingModelEnums.ModalityType,
+            'PlaceCall.initiateModalityTypes',
+            [CallingModelEnums.ModalityType.Unknown, CallingModelEnums.ModalityType.VideoBasedScreenSharing]));
+
+        if(this.source != null &amp;&amp; !this.source.originator) errors.push('PlaceCall.source must have set originator to true');
+        if(this.target != null &amp;&amp; this.target.originator) errors.push('PlaceCall.target must have set originator to false');
+
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should play/tts out prompt(s)
+ *
+ * @extends ActionBase
+ *
+ * @property {Object[]} prompts - array of Prompt; List of prompts to play out
+ */
+class PlayPrompt extends ActionBase
+{
+    /**
+     * Creates a new PlayPrompt action instance
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.PlayPrompt;
+        this.prompts = null;
+
+        this.populatePlainInput(inputData, {
+            'prompts' : attrData => {return new Prompt(attrData);}
+        });
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context) 
+    {
+        var errors = super.validate(context);
+        errors = errors.concat(ModelValidation.validateTypedObjectArray(context, this.prompts, Prompt, 'PlayPrompt.prompts', 'Prompt'));
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.PlayPrompt)
+            errors.push('PlayPrompt.type is set to invalid value ' + this.type);
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should perform speech or dtmf recognition
+ *
+ * @extends ActionBase
+ *
+ * @property {Object} playPrompt - PlayPrompt; PlayPrompt action to be played out (if any) before recognition starts. Customers can choose to specify "playPrompt" action separately or specify as part of "recognize" - mostly all recognitions are preceeded by a prompt
+ * @property {Boolean} bargeInAllowed - optional, default: true; specifies whether customers are allowed to enter choice before prompt finishes
+ * @property {String} culture - optional, string from CallingModelEnums.Culture, default: EnUs;  culture of Speech Recognizer to use
+ * @property {Number} InitialSilenceTimeoutinSeconds - optional, default: 5; Maximum initial silence allowed from the time we start the recognition operation before we timeout and fail the operation (time for the prompt is excluded if any)
+ * @property {Number} InterDigitTimeoutInSeconds - optional, default: 1; Maximum allowed time between digits if we are doing dtmf based choice recognition or CollectDigits recognition
+ * @property {Object[]} choices - array of RecognitionOption, optional;  list of choices to recognize against. Choices can be speech or dtmf based
+ * @property {Object[]} choices - array of CollectDigits, optional;  There is no choice based recognition. Rather collect all digits entered by user. Either CollectDigits or Choices must be specified. Both can not be specified
+ */
+class Recognize extends ActionBase
+{
+    /**
+     * Creates a new Recognize action instance
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.Recognize;
+        this.playPrompt = null;
+        this.bargeInAllowed = null;
+        this.culture = null;
+        this.initialSilenceTimeoutInSeconds = null;
+        this.interDigitTimeoutInSeconds = null;
+        this.choices = null;
+        this.collectDigits = null;
+
+        this.populatePlainInput(inputData, {
+            'playPrompt' : attrData => new PlayPrompt(attrData),
+            'choices' : attrData => new RecognitionOption(attrData),
+            'collectDigits' : attrData => new CollectDigits(attrData)
+        });
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context) 
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.Recognize)
+            errors.push('Recognize.type is set to invalid value ' + this.type);
+
+        errors = errors.concat(ModelValidation.validateOptionalTypedObject(context, this.playPrompt, PlayPrompt, 'Recognize.playPrompt', 'PlayPrompt'));
+        errors = errors.concat(ModelValidation.validateOptionalNumber(context, this.initialSilenceTimeoutInSeconds,
+                      'Recognize.initialSilenceTimeoutInSeconds', CallingModelLimits.InitialSilenceTimeoutSec.Min));
+        errors = errors.concat(ModelValidation.validateOptionalNumber(context, this.interDigitTimeoutInSeconds,
+            'Recognize.interDigitTimeoutInSeconds', CallingModelLimits.InterDigitTimeoutSec.Min));
+        errors = errors.concat(ModelValidation.validateOptionalBoolean(context, this.bargeInAllowed,  'Recognize.bargeInAllowed'));
+        errors = errors.concat(ModelValidation.validateOptionalEnum(context, this.culture, CallingModelEnums.Culture, 'Recognize.culture'));
+
+        var choiceSpecified = this.choices != null;
+        var collectDigitsSpecified = this.collectDigits != null;
+        
+        if(!choiceSpecified &amp;&amp; !collectDigitsSpecified)
+        {
+            errors.push('Neither Recognize.choices or Recognize.collectDigits is specified');
+        }
+        else if(choiceSpecified &amp;&amp; collectDigitsSpecified)
+        {
+            errors.push('Both Recognize.choices or Recognize.collectDigits are specified');
+        }
+        else if(choiceSpecified)
+        {
+            errors = errors.concat(ModelValidation.validateTypedObjectArray(context, this.choices, RecognitionOption,
+                'Recognize.choices', 'RecognitionOption'));
+            if(errors.length == 0) errors = errors.concat(this.validateUniquenessOfChoices(context));
+        }
+        else if(collectDigitsSpecified)
+        {
+            errors = errors.concat(ModelValidation.validateTypedObject(context, this.collectDigits, CollectDigits,
+                          'Recognize.collectDigits', 'CollectDigits'));
+        }
+        
+        return errors;
+    }
+
+    /**
+     *  validates whether the choice options in Recognize.choices are unique
+     *  called automatically as part of validate
+     *
+     * @returns {Array} - validation errors
+     */
+    validateUniquenessOfChoices()
+    {
+        var errors = [];
+        var dtmfsChoices = new Set();
+        var dtmfsAdded = 0;
+
+        var speechChoices = new Set();
+        var speechChoicesAdded = 0;
+
+        for (var i = 0; i &lt; this.choices.length; ++i)
+        {
+            if (this.choices[i].dtmfVariation != null)
+            {
+                dtmfsChoices.add(this.choices[i].dtmfVariation);
+                ++dtmfsAdded;
+            }
+
+            if (this.choices[i].speechVariation != null)
+            {
+                this.choices[i].speechVariation.forEach(function (item) {
+                    speechChoices.add(item);
+                    ++speechChoicesAdded;
+                });
+            }
+        }
+
+        if (dtmfsChoices.size != dtmfsAdded)
+        {
+            errors.push('Some dtmfs choices in the Recognize.choices are not unique');
+        }
+
+        if (speechChoices.size != speechChoicesAdded)
+        {
+            errors.push('Some speech choices in the Recognize.choices are not unique');
+        }
+
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should start recording user speech
+ *
+ * @extends ActionBase
+ *
+ * @property {Object} playPrompt - PlayPrompt; PlayPrompt action to be played (if any) before recognition starts. Customers can choose to specify "playPrompt" action separately or specify as part of "recognize" - mostly all recognitions are preceeded by a prompt
+ * @property {Number} maxDurationInSeconds - optional, default: 180; maximum duration of recording
+ * @property {Number} InitialSilenceTimeoutInSeconds - optional, default: 5; Maximum initial silence allowed from the time we start the recognition operation before we timeout and fail the operation (time for the prompt is excluded if any)
+ * @property {Number} maxSilenceTimeoutInSeconds - optional, default: 1; Maximum allowed silence once the user has started speaking before we conclude the user is done recording
+ * @property {String} recordingFormat - optional, string from CallingModelEnums.RecordingFormat, default: Wma;  the format is which the recording is expected
+ * @property {Boolean} transcribe - optional, default: false; if specified "true", then we would attempt to transcribe the recording.
+ * @property {Boolean} playBeep - optional, true: false; If specified "true", then we would play a beep before starting recording operation
+ * @property {String[]} stopTones - optional, array of dtmfs chars; stop patterns which users can punch to end recording
+ */
+class Record extends ActionBase
+{
+    /**
+     * Creates a new Record action instance
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.Record;
+        this.playPrompt = null;
+        this.maxDurationInSeconds = null;
+        this.initialSilenceTimeoutInSeconds = null;
+        this.maxSilenceTimeoutInSeconds = null;
+        this.recordingFormat = null;
+        this.transcribe = null;
+        this.playBeep = null;
+        this.stopTones = null;
+
+        this.populatePlainInput(inputData, {
+            'playPrompt': attrData => {
+                return new PlayPrompt(attrData);
+            }
+        });
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context)
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.Record)
+            errors.push('Record.type is set to invalid value ' + this.type);
+
+        if(this.stopTones != null)
+        {
+            errors = errors.concat(Dmtfs.validateDtmfsArray(context, this.stopTones, 'Record.stopTones'));
+        }
+
+        errors = errors.concat(ModelValidation.validateOptionalTypedObject(context, this.playPrompt, PlayPrompt, 'Record.playPrompt', 'PlayPrompt'));
+
+        errors = errors.concat(ModelValidation.validateOptionalNumber(context, this.maxDurationInSeconds,
+            'Record.maxDurationInSeconds', CallingModelLimits.RecordingDurationSec.Min, CallingModelLimits.RecordingDurationSec.Max));
+        errors = errors.concat(ModelValidation.validateOptionalNumber(context, this.initialSilenceTimeoutInSeconds,
+            'Record.initialSilenceTimeoutInSeconds', CallingModelLimits.InitialSilenceTimeoutSec.Min, CallingModelLimits.InitialSilenceTimeoutSec.Max));
+        errors = errors.concat(ModelValidation.validateOptionalNumber(context, this.maxSilenceTimeoutInSeconds,
+            'Record.maxSilenceTimeoutInSeconds', CallingModelLimits.SilenceTimeoutSec.Min, CallingModelLimits.SilenceTimeoutSec.Max));
+        errors = errors.concat(ModelValidation.validateOptionalBoolean(context, this.transcribe, 'Record.transcribe'));
+        errors = errors.concat(ModelValidation.validateOptionalBoolean(context, this.playBeep, 'Record.playBeep'));
+        errors = errors.concat(ModelValidation.validateOptionalEnum(context, this.recordingFormat, CallingModelEnums.RecordingFormat, 'Record.recordingFormat'));
+
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should reject the call
+ *
+ * @extends ActionBase
+ */
+class Reject extends ActionBase
+{
+    /**
+     * Creates a new Reject action instance
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.Reject; 
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context)
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.Reject)
+            errors.push('Reject.type is set to invalid value ' + this.type);
+        return errors;
+    }
+}
+
+/**
+ * This is the action which customers can specify to indicate that the server call bot should transfer established
+ * call. The transfer is attended - meaning if the transfer fails the bot is able to still interact with caller.
+ * If transfer succeeds the call is automatically hang up.
+ *
+ * @extends ActionBase
+ *
+ * @property {Object} target - Participant class; new call recipient
+ */
+class Transfer extends ActionBase
+{
+    /**
+     * Creates a new Transfer action
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.action = CallingModelEnums.ActionType.Transfer;
+        this.target = null;
+
+        this.populatePlainInput(inputData, {
+            'target' : attrData => {return new Participant(attrData);}});
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context) 
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.Transfer)
+            errors.push('Transfer.type is set to invalid value ' + this.type);
+
+        errors = errors.concat(ModelValidation.validateTypedObject(context, this.target, Participant, 'Transfer.target', 'Participant'));
+        if(errors.length == 0)
+        {
+            if(this.target.identity != null &amp;&amp;  !this.target.identity.startsWith('8:'))
+            {
+                errors.push('Transfer.target identity must be user skype id, i.e. in form 8:&lt;id>');
+            }
+            if(this.target.originator != null &amp;&amp; this.target.originator == true)
+            {
+                errors.push('Transfer.target originator must be set to false');
+            }
+        }
+        
+        return errors;
+    }
+}
+
+/**
+ * This is the action that is used for video subscription whatever it is
+ *
+ * @extends ActionBase
+ *
+ * @property {String} appState - optional. Opaque string to facilitate app developers to pass their custom data in this field back in the response
+ * @property {Number} socketId - sequence ID of video socket. Index from 0-9
+ * @property {String} participantIdentity - optional, default: null; identity of the participant whose video is pinned if VideoMode is set to manual
+ * @property {String} videoResolution - optional, string from CallingModelEnums.ResolutionFormat, default: Sd360p;  indicates the video resolution format
+ * @property {String} videoModality - optional, string from CallingModelEnums.ModalityType, default: Unknown;  indicates whether the video is from the camera or from screen sharing
+ * @property {String} videoSubscriptionMode - optional, string from CallingModelEnums.VideoSubscriptionMode, default: Manual;  videoMode indicates whether the socket is pinned to a particular participant
+ */
+class VideoSubscription extends ActionBase
+{
+    /**
+     * Creates a new VideoSubscription action
+     *
+     * @param {Object} inputData - the object received from Calling service, or null if constructing from scratch.
+     * @param {Object} isStandAloneAction - true if the action is isolated and must not be part of the action list
+     */
+    constructor(inputData, isStandAloneAction)
+    {
+        super(inputData, isStandAloneAction);
+        this.appState = null;
+        this.socketId = null;
+        this.participantIdentity = null;
+        this.videoSubscriptionMode = CallingModelEnums.VideoSubscriptionMode.Manual;
+        this.videoModality = CallingModelEnums.ModalityType.Unknown;
+        this.videoResolution = CallingModelEnums.ResolutionFormat.Sd360p;
+        this.action = CallingModelEnums.ActionType.VideoSubscription;
+
+        this.populatePlainInput(inputData);
+    }
+
+    /**
+     *  validates the object instance
+     *
+     * @param context
+     * @returns {Array} - validation errors
+     */
+    validate(context) 
+    {
+        var errors = super.validate(context);
+
+        if(this.type != null &amp;&amp; this.type != CallingModelEnums.ActionType.VideoSubscription)
+            errors.push('VideoSubscription.type is set to invalid value ' + this.type);
+
+        errors = errors.concat(ModelValidation.validateNumber(context, this.socketId, 'VideoSubscription.socketId', 0, 9));
+        errors = errors.concat(ModelValidation.validateEnum(context, this.videoResolution, CallingModelEnums.ResolutionFormat,
+                      'VideoSubscription.videoResolution'));
+        errors = errors.concat(ModelValidation.validateEnum(context, this.videoSubscriptionMode, CallingModelEnums.VideoSubscriptionMode,
+                      'VideoSubscription.videoSubscriptionMode'));
+        errors = errors.concat(ModelValidation.validateEnum(context,this.videoModality, CallingModelEnums.ModalityType,
+                      'VideoSubscription.videoModality', [ CallingModelEnums.ModalityType.Audio ]));
+        errors = errors.concat(ModelValidation.validateOptionalString(context, this.appState, 'VideoSubscription.appState', true, CallingModelLimits.AppStateLength.Max));
+
+        if(this.videoSubscriptionMode == CallingModelEnums.VideoSubscriptionMode.Manual)
+        {
+            errors = errors.concat(ModelValidation.validateString(context, this.participantIdentity, 'VideoSubscription.participantIdentity', false));
+            if(this.videoModality == CallingModelEnums.ModalityType.Unknown) errors.push('VideoSubscription.videoModality cannot be set Unknown with videoSubscriptionMode=Manual');
+        }
+
+        if(this.videoSubscriptionMode == CallingModelEnums.VideoSubscriptionMode.Auto)
+        {
+            if(this.participantIdentity != null) errors.push('VideoSubscription.participantIdentity must not be set with videoSubscriptionMode=Auto');
+            if(this.videoModality != CallingModelEnums.ModalityType.Unknown) errors.push('VideoSubscription.videoModality must be set to Unknown with videoSubscriptionMode=Auto');
+        }
+
+        return errors;
+    }
+}
+
+/**
+ *  validates ordered list of actions
+ *
+ * @param {Object} context - validation context
+ * @param {Object[]} actionArray - array of actions
+ * @param {String} actionArrayName - optional name of the actions array to be used for validation error texts
+ *
+ * @returns {String[]} - validation errors
+ * 
+ * @ignore
+ */
+function validateActionArray(context, actionArray, actionArrayName)
+{
+    if(actionArrayName == null) actionArrayName = 'Action array';
+
+    var errors = ModelValidation.validateTypedObjectArray(context, actionArray, ActionBase, actionArrayName, 'ActionBase');
+    if(errors.length > 0) return errors;
+
+    if(actionArray.length == 1) return errors;
+
+    var actionNamesSet = new Set();
+    actionArray.forEach(item => actionNamesSet.add(item.action));
+
+    // standalone action must not be part of the action list unless it is the only one on the list
+    actionArray.forEach(function (item)
+    {
+        if (item.isStandAloneAction) errors.push(
+            'Standalone action of type ' + item.action + ' must not be specified with other actions in ' + actionArrayName);
+    });
+
+    // make sure there are no duplicities
+    if(actionNamesSet.size != actionArray.length)
+    {
+        errors.push('Some action types are used multiple times in the ' + actionArrayName);
+    }
+
+    // make sure answer and place call actions are not used together
+    if(actionNamesSet.has(CallingModelEnums.ActionType.Answer) &amp;&amp; actionNamesSet.has(CallingModelEnums.ActionType.PlaceCall))
+    {
+        errors.push('Answer and PlaceCall must not appear together in ' + actionArrayName);
+    }
+
+    // make sure that the actions are used in correct order
+    var currentOrderValue = actionOrdering[actionArray[0].action];
+    var initialSign = Math.sign(currentOrderValue);
+    for (var i = 1; i &lt; actionArray.length; ++i)
+    {
+        var nextOrderValue = actionOrdering[actionArray[i].action];
+        if(nextOrderValue &lt; currentOrderValue || initialSign != Math.sign(nextOrderValue))
+        {
+            errors.push('Actions ' + actionArray[i-1].action  + ' and ' + actionArray[i].action + ' are not in proper order in ' + actionArrayName);
+        }
+        currentOrderValue = nextOrderValue;
+    }
+
+    return errors;
+}
+
+/**
+ * instantiates proper action class object from the passed generic object
+ *
+ * @param {Object} actionData - object, possibly the relevant part of deserialized JSON received from the Calling service
+ * @param {Object} isStandAloneAction - true if the resulting action should be isolated and must not be part of the action list
+ *
+ * @returns {Object} appropriate instance of ActionBase extending class
+ *
+ * @throws Error if actionData are null, actionData.action is not set or is not from CallingModelEnums.ActionType
+ */
+function instantiateAction(actionData, isStandAlone)
+{
+    if(actionData == null)
+    {
+        throw new Error('action data are null');
+    }
+    else if(typeof actionData  != 'object' || Array.isArray(actionData))
+    {
+        throw new Error('Invalid type of the action data');
+    }
+    else if(actionData.action == null)
+    {
+        throw new Error('action attribute in the action data is undefined or null');
+    }
+
+    if(isStandAlone == null) isStandAlone = false;
+
+    switch(actionData.action)
+    {
+    case CallingModelEnums.ActionType.Answer:
+        return new Answer(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.AnswerAppHostedMedia:
+        return new AnswerAppHostedMedia(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.Hangup:
+        return new Hangup(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.PlaceCall:
+        return new PlaceCall(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.PlayPrompt:
+        return new PlayPrompt(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.Recognize:
+        return new Recognize(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.Record:
+        return new Record(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.Reject:
+        return new Reject(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.Transfer:
+        return new Transfer(actionData, isStandAlone);
+
+    case CallingModelEnums.ActionType.VideoSubscription:
+        return new VideoSubscription(actionData, isStandAlone);
+    }
+
+    throw new Error('Unsupported ' + actionData.action + ' action in the action data');
+}
+
+module.exports = {
+    ActionBase,
+    Answer,
+    AnswerAppHostedMedia,
+    Hangup,
+    PlaceCall,
+    PlayPrompt,
+    Recognize,
+    Record,
+    Reject,
+    Transfer,
+    VideoSubscription,
+    validateActionArray,
+    instantiateAction
+};
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+<div class="modal fade" id="searchResults">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Search results</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	
+		on Tue Mar 29th 2016
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			var id = $( heading ).attr( "id" );
+			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		SearcherDisplay.init();
+	});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Skype Bot SDK for Node.js Source: bot-service.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Skype Bot SDK for Node.js</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="AbstractModelType.html">AbstractModelType</a></li><li><a href="ActionBase.html">ActionBase</a></li><li><a href="Answer.html">Answer</a></li><li><a href="AnswerAppHostedMedia.html">AnswerAppHostedMedia</a></li><li><a href="AnswerAppHostedMediaOutcome.html">AnswerAppHostedMediaOutcome</a></li><li><a href="AnswerOutcome.html">AnswerOutcome</a></li><li><a href="Attachment.html">Attachment</a></li><li><a href="Bot.html">Bot</a></li><li><a href="BotService.html">BotService</a></li><li><a href="CallBackLink.html">CallBackLink</a></li><li><a href="CallingService.html">CallingService</a></li><li><a href="CallStateChangeNotification.html">CallStateChangeNotification</a></li><li><a href="ChoiceOutcome.html">ChoiceOutcome</a></li><li><a href="CollectDigits.html">CollectDigits</a></li><li><a href="CollectDigitsOutcome.html">CollectDigitsOutcome</a></li><li><a href="ContactNotification.html">ContactNotification</a></li><li><a href="Conversation.html">Conversation</a></li><li><a href="ConversationBase.html">ConversationBase</a></li><li><a href="ConversationResult.html">ConversationResult</a></li><li><a href="Event.html">Event</a></li><li><a href="Hangup.html">Hangup</a></li><li><a href="HangupOutcome.html">HangupOutcome</a></li><li><a href="HistoryDisclosed.html">HistoryDisclosed</a></li><li><a href="Message.html">Message</a></li><li><a href="MessagingService.html">MessagingService</a></li><li><a href="NotificationBase.html">NotificationBase</a></li><li><a href="NotificationResponse.html">NotificationResponse</a></li><li><a href="OperationOutcomeBase.html">OperationOutcomeBase</a></li><li><a href="Participant.html">Participant</a></li><li><a href="PlaceCall.html">PlaceCall</a></li><li><a href="PlaceCallOutcome.html">PlaceCallOutcome</a></li><li><a href="PlayPrompt.html">PlayPrompt</a></li><li><a href="PlayPromptOutcome.html">PlayPromptOutcome</a></li><li><a href="Prompt.html">Prompt</a></li><li><a href="RecognitionOption.html">RecognitionOption</a></li><li><a href="Recognize.html">Recognize</a></li><li><a href="RecognizeOutcome.html">RecognizeOutcome</a></li><li><a href="Record.html">Record</a></li><li><a href="RecordOutcome.html">RecordOutcome</a></li><li><a href="Reject.html">Reject</a></li><li><a href="RejectOutcome.html">RejectOutcome</a></li><li><a href="RosterParticipant.html">RosterParticipant</a></li><li><a href="RosterUpdateNotification.html">RosterUpdateNotification</a></li><li><a href="TopicUpdated.html">TopicUpdated</a></li><li><a href="TranscriptionOutcome.html">TranscriptionOutcome</a></li><li><a href="Transfer.html">Transfer</a></li><li><a href="TransferOutcome.html">TransferOutcome</a></li><li><a href="UserAdded.html">UserAdded</a></li><li><a href="UserRemoved.html">UserRemoved</a></li><li><a href="VideoSubscription.html">VideoSubscription</a></li><li><a href="VideoSubscriptionOutcome.html">VideoSubscriptionOutcome</a></li><li><a href="Workflow.html">Workflow</a></li><li><a href="WorkflowValidationOutcome.html">WorkflowValidationOutcome</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="BotService.html#event:attachment">BotService#event:attachment</a></li><li><a href="BotService.html#event:contactAdded">BotService#event:contactAdded</a></li><li><a href="BotService.html#event:contactRemoved">BotService#event:contactRemoved</a></li><li><a href="BotService.html#event:groupMessage">BotService#event:groupMessage</a></li><li><a href="BotService.html#event:message">BotService#event:message</a></li><li><a href="BotService.html#event:personalMessage">BotService#event:personalMessage</a></li><li><a href="BotService.html#event:threadAddMember">BotService#event:threadAddMember</a></li><li><a href="BotService.html#event:threadBotAdded">BotService#event:threadBotAdded</a></li><li><a href="BotService.html#event:threadBotRemoved">BotService#event:threadBotRemoved</a></li><li><a href="BotService.html#event:threadHistoryDisclosedUpdate">BotService#event:threadHistoryDisclosedUpdate</a></li><li><a href="BotService.html#event:threadRemoveMember">BotService#event:threadRemoveMember</a></li><li><a href="BotService.html#event:threadTopicUpdated">BotService#event:threadTopicUpdated</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#incomingCallbackHandler">incomingCallbackHandler</a></li><li><a href="global.html#incomingCallHandler">incomingCallHandler</a></li><li><a href="global.html#instantiateAction">instantiateAction</a></li><li><a href="global.html#instantiateNotification">instantiateNotification</a></li><li><a href="global.html#instantiateOperationOutcome">instantiateOperationOutcome</a></li><li><a href="global.html#messagingHandler">messagingHandler</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+		<div class="col-sm-3 col-md-3">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: bot-service.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">'use strict';
+
+const EventEmitter = require('events').EventEmitter;
+const MessagingBotService = require('./messaging/messaging-service');
+const CallingService = require('./calling/calling-service');
+const eventTypes = require('./messaging/messaging-service-request-processor-v2').EventTypes;
+
+/**
+ * BotService unifies events and commands for both messaging and calling.
+ * 
+ * ### Messaging
+ * For messaging events you can register multiple handlers, because
+ * processing and replying to a message is done asynchronously.
+ * Messaging events you can use are the following:
+ *   - [contactAdded]{@link BotService#event:contactAdded}
+ *   - [contactRemoved]{@link BotService#event:contactRemoved}
+ *   - [message]{@link BotService#event:message}
+ *   - [personalMessage]{@link BotService#event:personalMessage}
+ *   - [groupMessage]{@link BotService#event:groupMessage}
+ *   - [threadBotAdded]{@link BotService#event:threadBotAdded}
+ *   - [threadAddMember]{@link BotService#event:threadAddMember}
+ *   - [threadBotRemoved]{@link BotService#event:threadBotRemoved}
+ *   - [threadRemoveMember]{@link BotService#event:threadRemoveMember}
+ *   - [threadTopicUpdated]{@link BotService#event:threadTopicUpdated}
+ *   - [threadHistoryDisclosedUpdate]{@link BotService#event:threadHistoryDisclosedUpdate}
+ *   - [attachment]{@link BotService#event:attachment}
+ * 
+ * For personal and group commands it's necessary to also provide a regular expression, 
+ * so there are helper function for that.
+ *   - [onPersonalCommand()]{@link BotService#onPersonalCommand}
+ *   - [onGroupCommand()]{@link BotService#onGroupCommand}
+ * 
+ * ### Calling
+ * Calling events are synchronous and you need to respond to each one.
+ * To ensure there is exactly one handler, the interface for these events
+ * is slightly different and instead of using node.js events we provide
+ * methods for registering the handlers like [onIncomingCall()]{@link BotService#onIncomingCall}.
+ * The complete list of calling events is as follows:
+ *   - [onIncomingCall()]{@link BotService#onIncomingCall}
+ *   - [onAnswerCompleted()]{@link BotService#onAnswerCompleted}
+ *   - [onRejectCompleted()]{@link BotService#onRejectCompleted}
+ *   - [onHangupCompleted()]{@link BotService#onHangupCompleted}
+ *   - [onPlayPromptCompleted()]{@link BotService#onPlayPromptCompleted}
+ *   - [onRecognizeCompleted()]{@link BotService#onRecognizeCompleted}
+ *   - [onRecordCompleted()]{@link BotService#onRecordCompleted}
+ *   - [onWorkflowValidationCompleted()]{@link BotService#onWorkflowValidationCompleted}
+ *   - [onCallStateChange()]{@link BotService#onCallStateChange}
+ */
+class BotService extends EventEmitter {
+    /**
+     * Create a new BotService instance. You don't have to specify both messaging and calling options if you need just one of them.
+     * 
+     * @param {Object} configuration - Bot Platform configuration.
+     * @param {Object} [configuration.messaging] - Configuration for messaging service. Mandatory only if you want to use messaging service.
+     * @param {string} configuration.messaging.botId - The bot's id (e.g. "28:trivia_bot").
+     * @param {string} configuration.messaging.appId - The bot's application id for OAuth.
+     * @param {string} configuration.messaging.appSecret - The bot's application secret for OAuth.
+     * @param {number} configuration.messaging.requestTimeout - The https request timeout in milliseconds.
+     * @param {Object} [configuration.calling] - Configuration for calling service. Mandatory only if you want to use calling service.
+     * @param {string} configuration.calling.callbackUri - The url that will be sent with each request
+     *       as the callback url. Can be overriden in a workflow for each request.
+     */
+    constructor(configuration) {
+        super();
+        
+        this.messagingBotService = null;
+        if ('messaging' in configuration) {
+            this.messagingBotService = new MessagingBotService(configuration.messaging);
+        }
+        
+        this.callingBotService = null;
+        if ('calling' in configuration) {
+            this.callingBotService = new CallingService(configuration.calling.callbackUri);
+        }
+        
+        let messagingEvents = [];
+        for (let eventName in eventTypes) {
+            messagingEvents.push(eventTypes[eventName]);
+        }
+                
+        this.on('newListener', (event, listener) => {
+            if (messagingEvents.indexOf(event) > -1 &amp;&amp; this.messagingBotService !== null) {
+                this.messagingBotService.on(event, listener);
+            }
+        });
+        
+        this.on('removeListener', (event, listener) => {
+            if (messagingEvents.indexOf(event) > -1 &amp;&amp; this.messagingBotService !== null) {
+                this.messagingBotService.removeListener(event, listener);
+            }
+        });
+    }
+    
+    //
+    // Messaging
+    //
+    
+    /**
+     * Register handler for command in 1:1 chats (messaging).
+     * Callback will be called if there is a message in any 1:1 that matches the regular expression.
+     *
+     * **Note:** If a command is matched, the [personalMessage]{@link BotService#event:personalMessage} event won't be emitted.
+     * 
+     * @param {RegExp} regex - The regular expression that is used for matching 1:1 messages.
+     * @param {BotService~commandCallback} callback - The callback that is called when a message is matched. 
+     */
+    onPersonalCommand(regex, callback) {
+        if (this.messagingBotService !== null) {
+            this.messagingBotService.onPersonalCommand(regex, callback);
+        } else {
+            throw new Error('Messaging not configured.');
+        }
+    }
+    
+    /**
+     * Register handler for command in group chats (messaging).
+     * Callback will be called if there is a message in any group chat that matches the regular expression.
+     * 
+     * **Note:** If a command is matched, the [groupMessage]{@link BotService#event:groupMessage} event won't be emitted.
+     * 
+     * @param {RegExp} regex - The regular expression that is used for matching 1:1 messages.
+     * @param {BotService~commandCallback} callback - The callback that is called when a message is matched. 
+     */
+    onGroupCommand(regex, callback) {
+        if (this.messagingBotService !== null) {
+            this.messagingBotService.onGroupCommand(regex, callback);
+        } else {
+            throw new Error('Messaging not configured.');
+        }
+    }
+    
+    /**
+     * Callback is called once the sent message is delivered / failed.
+     * 
+     * @callback BotService~sendMessageCallback
+     * 
+     * @param {Error} error - An error, if sending failed.
+     */
+    
+    /**
+     * Send a message. Message can be sent to any user or group chat (messaging).
+     * 
+     * @param {string} to - The recipient's username.
+     * @param {string} content - The content of the message. If any html tags are present, they need to be valid or escaped (see `escape` parameter).
+     * @param {bool} [escape] - If true, content will be escaped to prevent "&amp;", "&lt;", and ">" from breaking the message.
+     * @param {BotService~sendMessageCallback} callback - The callback that handles the response.
+     */
+    send(to, content, escape, callback) {
+        if (this.messagingBotService !== null) {
+            this.messagingBotService.send(to, content, escape, callback);
+        } else {
+            throw new Error('Messaging not configured.');
+        }
+    }
+    
+    /**
+     * Callback for sending attachments.
+     * 
+     * @callback BotService~attachmentSentCallback
+     * 
+     * @param {Error} error - The error if there was one.
+     * @param {AttachmentResponse} attachmentResponse - The response received after attachment was sent.
+     */
+    
+    /**
+     * Send an attachment (media) to a user or group chat
+     *
+     * @param {string} to - The username or group id of recipient.
+     * @param {string} name - The attachment's name, `null` means no name is provided.
+     * @param {string} type - The attachment's type, must be 'Image' or 'Video'.
+     * @param {Buffer} binaryContent - The content that should be sent (binary data).
+     * @param {Buffer} [thumbnailContent] - The thumbnail for the sent content (binary data).
+     * @param {BotService~attachmentSentCallback} callback - Callback that is called after the attachment is sent.
+     */
+    sendAttachment(to, name, type, binaryContent, thumbnailContent, callback) {
+        if (this.messagingBotService !== null) {
+            this.messagingBotService.sendAttachment(to, name, type, binaryContent, thumbnailContent, callback);
+        } else {
+            throw new Error('Messaging not configured.');
+        }
+    }
+    
+    /**
+     * Callback for sending attachments and getting information about attachments.
+     * 
+     * @callback BotService~attachmentInfoCallback
+     * 
+     * @param {Error} error - The error if there was one.
+     * @param {AttachmentInfo} attachmentInfo - The received information about the attachment.
+     */
+    
+    /**
+     * Get information about an attachment.
+     *
+     * @param {string} attachmentId - The unique attachment identifier received from the response to [postAttachment()]{@link BotService~postAttachment} or from the [attachment]{@link BotService#event:attachment} event.
+     * @param {BotService~attachmentInfoCallback} callback - The callback that is called after the information is received.
+     */
+    getAttachmentInfo(attachmentId, callback) {
+        if (this.messagingBotService !== null) {
+            this.messagingBotService.getAttachmentInfo(attachmentId, callback);
+        } else {
+            throw new Error('Messaging not configured.');
+        }
+    }
+    
+    /**
+     * Callback for getting content of attachments.
+     * 
+     * @callback BotService~attachmentContentCallback
+     * 
+     * @param {Error} error - The error if there was one. 
+     * @param {Buffer} content - The content of the blob.
+     */
+    
+    /**
+     * Get content of attachment (binary data).
+     *
+     * @param {string} attachmentId - The unique attachment identifier received from the response to [postAttachment()]{@link BotService~postAttachment} or from the [attachment]{@link BotService#event:attachment} event.
+     * @param {string} viewId - The identifier of the attachment view (either 'original' or 'thumbnail') available in the attachment's info ({@link AttachmentInfo}).
+     * @param {BotService~attachmentContentCallback} callback - The callback that is triggered after the attachment's content is downloaded.
+     */
+    getAttachment(attachmentId, viewId, callback) {
+        if (this.messagingBotService !== null) {
+            this.messagingBotService.getAttachment(attachmentId, viewId, callback);
+        } else {
+            throw new Error('Messaging not configured.');
+        }
+    }
+    
+    /**
+     * Process request and emit events (messaging).
+     * 
+     * @param {string | object} request - The body of the request received from messaging service.
+     * 
+     * @emits BotService#event:contactAdded
+     * @emits BotService#event:contactRemoved
+     * @emits BotService#event:message
+     * @emits BotService#event:personalMessage
+     * @emits BotService#event:groupMessage
+     * @emits BotService#event:threadBotAdded
+     * @emits BotService#event:threadAddMember
+     * @emits BotService#event:threadBotRemoved
+     * @emits BotService#event:threadRemoveMember
+     * @emits BotService#event:threadTopicUpdated
+     * @emits BotService#event:threadHistoryDisclosedUpdate
+     * @emits BotService#event:attachment
+     */
+    processMessagingRequest(request) {
+        if (this.messagingBotService !== null) {
+            this.messagingBotService.processRequest(request);
+        } else {
+            throw new Error('Messaging not configured.');
+        }
+    }
+    
+    //
+    // Calling
+    //
+    
+    
+    /**
+     * Callback to finish processing of events.
+     * 
+     * @callback BotService~finishEventHandling
+     * 
+     * @param {Error} error
+     * @param {Workflow} workflow
+     */
+    
+    /** 
+     * Callback to finish notification processing.
+     * @callback BotService~finishNotificationHandling
+     * 
+     * @param {Error} error
+     * @param {NotificationResponse} notificationResponse
+     */
+    
+    /**
+     * Callback to handle calling events.
+     * 
+     * @callback BotService~callNotificationHandler
+     * 
+     * @param {ConversationResult} conversationResult - The result of the last workflow.
+     * @param {Workflow} workflow - The new workflow that should be updated and sent.
+     * @param {BotService~finishEventHandling} callback - The callback to finish the processing of the event.
+     */
+    
+    /**
+     * Callback to handle calling events.
+     * 
+     * @callback BotService~recordNotificationHandler
+     * 
+     * @param {ConversationResult} conversationResult - The result of the last workflow.
+     * @param {Buffer} record - The recorded audio in WMA format.
+     * @param {Workflow} workflow - The new workflow that should be updated and sent.
+     * @param {BotService~finishEventHandling} callback - The callback to finish the processing of the event.
+     */
+    
+    /**
+     * Register handler for the "answer action completed" event (calling).
+     * 
+     * You need to reply with an {@link Answer} action to incoming call to answer it.
+     * After the {@link Answer} action is executed, you will get "answer action completed" event.
+     * You need to implement this handler to be able to continue after answering the call.
+     * 
+     * In your handler you will get a {@link ConversationResult} object, it contains an `operationOutcome` field that has all the details about the outcome. For this handler, it will be an instance of {@link AnswerOutcome} class.  
+     * 
+     * @param {BotService~callNotificationHandler} handler - The event handler.
+     */
+    onAnswerCompleted(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onAnswerCompleted(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Callback to handle call state change.
+     * 
+     * @callback BotService~callStateChangeCallback
+     * 
+     * @param {CallStateChangeNotification} callStateChangeNotification
+     * @param {NotificationResponse} notificationResponse
+     * @param {BotService~finishNotificationHandling} callback - The event handler.
+     */
+        
+    /**
+     * Register handler for call state change (calling).
+     * 
+     * @param {BotService~callStateChangeCallback} handler
+     */
+    onCallStateChange(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onCallStateChange(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Register handler for "hangup action completed" event (calling).
+     * 
+     * During the call you can at any time send a {@link Hangup} action to end the call.
+     * After the {@link Hangup} action is executed, you will get the "hangup action completed" event.
+     * If you want to do some cleanup after the call is terminated, you need to implement a handler for this event.
+     * 
+     * In your handler you will get a {@link ConversationResult} object, it contains an `operationOutcome` field that has all the details about the outcome. For this handler, it will be an instance of {@link HangupOutcome} class.  
+     * 
+     * **Note**: In your handler you still need to call the callback, but don't provide any workflow as the call is already terminated.
+     * 
+     * @param {BotService~callNotificationHandler} handler - The event handler.
+     */
+    onHangupCompleted(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onHangupCompleted(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Callback to handle incoming call (calling).
+     * 
+     * @callback BotService~incomingCallHandler
+     * 
+     * @param {Conversation} conversation - The incoming call.
+     * @param {Workflow} workflow - The workflow for responding to the event.
+     * @param {BotService~finishEventHandling} callback - The callback to finish processing of the event.
+     */
+    
+    /**
+     * Register handler for incoming call (calling).
+     * 
+     * You get an event for each incoming call and it's up to you to decide if you
+     * want to answer or reject the call. You need to implement this handler to be
+     * able to answer or reject incoming calls.
+     * 
+     * @param {CallingBotService~incomingCallHandler} Event handler.
+     */
+    onIncomingCall(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onIncomingCall(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Register handler for "play prompt action completed" event (calling).
+     * 
+     * The registered handler will be called after a {@link PlayPrompt} action is executed.
+     * 
+     * In your handler you will get a {@link ConversationResult} object, it contains an `operationOutcome` field that has all the details about the outcome. For this handler, it will be an instance of {@link PlayPromptOutcome} class.  
+     *
+     * @param {BotService~callNotificationHandler} handler - The event handler.
+     */
+    onPlayPromptCompleted(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onPlayPromptCompleted(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Register handler for "recognize action completed" event (calling).
+     * 
+     * The registered handler will be called after a {@link Recognize} action is executed.
+     * 
+     * In your handler you will get a {@link ConversationResult} object, it contains an `operationOutcome` field that has all the details about the outcome. For this handler, it will be an instance of {@link RecognizeOutcome} class.  
+     * 
+     * @param {BotService~callNotificationHandler} handler - The event handler.
+     */
+    onRecognizeCompleted(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onRecognizeCompleted(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Register handler for "record action completed" event (calling).
+     * 
+     * The registered handler will be called after a {@link Record} action is executed.
+     * 
+     * In your handler you will get a {@link ConversationResult} object, it contains an `operationOutcome` field that has all the details about the outcome. For this handler, it will be an instance of {@link RecordOutcome} class.  
+     * 
+     * @param {BotService~recordNotificationHandler} handler - The event handler.
+     */
+    onRecordCompleted(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onRecordCompleted(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Register handler for "reject action completed" event (calling).
+     * 
+     * The registered handler will be called after an incoming call is rejected.
+     * 
+     * In your handler you will get a {@link ConversationResult} object, it contains an `operationOutcome` field that has all the details about the outcome. For this handler, it will be an instance of {@link RejectOutcome} class.  
+     * 
+     * @param {BotService~callNotificationHandler} handler - The event handler.
+     */
+    onRejectCompleted(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onRejectCompleted(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /** 
+     * Register handler for "workflow validation completed" event (calling).
+     * 
+     * The "workflow validation completed" event will be emitted only if you send 
+     * invalid {@link Workflow}.
+     * 
+     * In your handler you will get a {@link ConversationResult} object, it contains an `operationOutcome` field that has all the details about the outcome. For this handler, it will be an instance of {@link WorkflowValidationOutcome} class.  
+     * 
+     * @param {BotService~callNotificationHandler} handler - The event handler.
+     */
+    onWorkflowValidationCompleted(handler) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.onWorkflowValidationCompleted(handler);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Callback to finish incoming call processing.
+     * 
+     * If there is an error, the server should respond with 500, otherwise
+     * it should return 201 and the responseMessage as the body.
+     * 
+     * @callback BotService~processCallCallback
+     * 
+     * @param {Error} error
+     * @param {string} responseMessage
+     */
+    
+    /**
+     * Process new incoming call.
+     * 
+     * Processes new incoming call and emits a new "incomingCall" event.
+     * Will call the handler registered by [onIncomingCall()]{@link BotService#onIncomingCall}.
+     * 
+     * @param {object} content - The body of the request received from Bot platform.
+     * @param {BotService~processCallCallback}
+     */
+    processCall(content, callback) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.processCall(content, callback);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+    
+    /**
+     * Process new incoming callbacks.
+     * 
+     * Process a new incoming callback and call proper event handler.
+     * 
+     * @param {object} content - The body of the request received from Bot platform.
+     * @param {additionalData} additionalData - The additional binary data received from Bot platform.
+     * @param {BotService~processCallCallback}
+     */
+    processCallback(content, additionalData, callback) {
+        if (this.callingBotService !== null) {
+            this.callingBotService.processCallback(content, additionalData, callback);
+        } else {
+            throw new Error('Calling not configured.');
+        }
+    }
+}
+
+module.exports = BotService;</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+<div class="modal fade" id="searchResults">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Search results</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	
+		on Tue Mar 29th 2016
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			var id = $( heading ).attr( "id" );
+			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		SearcherDisplay.init();
+	});
+</script>
+
+</body>
+</html>
